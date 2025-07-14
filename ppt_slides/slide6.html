@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slide 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 3.5em;
+            margin-bottom: 1em;
+        }
+        ul {
+            font-size: 2em;
+            color: #34495e;
+            max-width: 80%;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>可拓展的方向</h1>
+        <ul>
+            <li>在线实践练习与测试</li>
+            <li>AI助教对演示内容的介入(tools/function calling)</li>
+            <li>摄像头的调用和图像识别的多模态运用</li>
+            <li>语音识别与语音合成辅助语言类教育</li>
+            <li>......</li>
+        </ul>
+    </div>
+
+    <div id="ppt-meta" style="display:none;">
+        <data id="next-page" value="/slide/7"></data>
+        <data id="llm-summary" value="本页列出了系统的可拓展方向：1) 在线实践练习与测试 2) AI助教功能调用介入 3) 摄像头图像识别多模态应用 4) 语音识别与合成语言教育辅助。"></data>
+    </div>
+
+    <script>
+        window.addEventListener('message', function(event) {
+            if (event.data.type === "get_llm_context") {
+                const meta = document.getElementById('ppt-meta');
+                const summary = meta.querySelector('#llm-summary').value;
+                window.parent.postMessage({
+                    type: "llm_context",
+                    context: summary
+                }, '*');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive PPT System</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body data-role="{{ role }}">
+    <div class="container">
+        <div class="ppt-container">
+            <iframe id="slide-frame" src="/slide/1"></iframe>
+            <div class="nav-buttons">
+                <button id="prev-btn" class="nav-btn">上一页</button>
+                <button id="next-btn" class="nav-btn">下一页</button>
+                <span id="page-indicator">1/4</span>
+            </div>
+        </div>
+        <div class="chat-container">
+            <div id="chat-messages" class="chat-messages"></div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="向AI助教提问...">
+                <button id="send-btn">发送</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="/static/marked.min.js"></script> -->
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>欢迎页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+            height: 100%;
+            box-sizing: border-box;
+            /* background-color: #f5f7fa; */
+        }
+        .content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 3.5em;  /* 放大标题 */
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .subtitle {
+            font-size: 2em;  /* 放大副标题 */
+            color: #3498db;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+        .info {
+            font-size: 1.8em;  /* 放大正文 */
+            color: #34495e;
+            max-width: 80%;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .footer {
+            position: absolute;
+            bottom: 30px;
+            font-size: 1.5em;
+            color: #7f8c8d;
+            width: 100%;
+            text-align: center;
+        }
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            .subtitle { font-size: 1.5em; }
+            .info { font-size: 1.3em; }
+            .footer { font-size: 1.2em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>欢迎来到交互式教学系统</h1>
+        <div class="subtitle">高职骨干教师课程实施能力提升培训班</div>
+        <p class="info">这是一个结合AI助教的现代化教学系统演示平台，<br>提供智能化教学辅助和实时互动功能</p>
+        
+        <div class="footer">
+            广西开放大学（广西信息职业技术学院） | 唐佳燊
+        </div>
+    </div>
+
+    <!-- 隐藏的元数据 -->
+    <div id="ppt-meta" style="display:none;">
+        <data id="next-page" value="/slide/2"></data>
+        <data id="llm-summary" value="这是欢迎页面，介绍了高职骨干教师培训班的交互式教学系统，包含AI助教功能。"></data>
+    </div>
+
+    <script>
+        // 监听父窗口的消息
+        window.addEventListener('message', function(event) {
+            if (event.data.type === "get_llm_context") {
+                const meta = document.getElementById('ppt-meta');
+                const summary = meta.querySelector('#llm-summary').value;
+                
+                window.parent.postMessage({
+                    type: "llm_context",
+                    context: summary
+                }, '*');
+            }
+        });
+    </script>
+</body>
+</html>

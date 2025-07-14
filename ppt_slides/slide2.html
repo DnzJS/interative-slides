@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slide 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 3.5em;  /* 从2.5em增大到3.5em */
+            margin-bottom: 1em;
+        }
+        ul {
+            font-size: 2em;  /* 从1.2em增大到2em */
+            color: #34495e;
+            max-width: 80%;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>系统功能</h1>
+        <ul>
+            <li>动态加载可交互页面</li>
+            <li>AI助教实时问答</li>
+            <li>教师学生同步控制</li>
+            <li>上下文感知回答</li>
+        </ul>
+    </div>
+
+    <div id="ppt-meta" style="display:none;">
+        <data id="next-page" value="/slide/3"></data>
+        <data id="llm-summary" value="本页列出了系统的主要功能：1) 动态加载PPT页面 2) AI助教实时问答 3) 教师学生同步控制 4) 上下文感知回答。"></data>
+    </div>
+
+    <script>
+        window.addEventListener('message', function(event) {
+            if (event.data.type === "get_llm_context") {
+                const meta = document.getElementById('ppt-meta');
+                const summary = meta.querySelector('#llm-summary').value;
+                window.parent.postMessage({
+                    type: "llm_context",
+                    context: summary
+                }, '*');
+            }
+        });
+    </script>
+</body>
+</html>

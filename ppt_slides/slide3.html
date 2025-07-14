@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slide 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 3.5em;
+            margin-bottom: 1em;
+        }
+        ul {
+            font-size: 2em;
+            color: #34495e;
+            max-width: 80%;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>开发本系统的动机</h1>
+        <ul>
+            <li>授课阶段人均较少互动条件、缺少即时反馈</li>
+            <li>无法兼顾大量学生的个性化需求</li>
+            <li>多数大语言模型暂无法良好兼容存量素材</li>
+        </ul>
+    </div>
+
+    <div id="ppt-meta" style="display:none;">
+        <data id="next-page" value="/slide/4"></data>
+        <data id="llm-summary" value="本页阐述了系统开发的三大动机：1) 传统授课互动不足且反馈滞后 2) 难以满足大规模个性化教学需求 3) 现有AI模型对传统教学素材兼容性有限。"></data>
+    </div>
+
+    <script>
+        window.addEventListener('message', function(event) {
+            if (event.data.type === "get_llm_context") {
+                const meta = document.getElementById('ppt-meta');
+                const summary = meta.querySelector('#llm-summary').value;
+                window.parent.postMessage({
+                    type: "llm_context",
+                    context: summary
+                }, '*');
+            }
+        });
+    </script>
+</body>
+</html>
