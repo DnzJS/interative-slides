@@ -1,5 +1,4 @@
-# interative-slides
-交互式教学系统
+# interative-slides 交互式教学系统
 
 <img width="1916" height="881" alt="微信图片_2025-07-14_111052_852" src="https://github.com/user-attachments/assets/e9a1bc05-5921-428e-926e-ae756320276a" />
 
